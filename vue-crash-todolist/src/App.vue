@@ -1,61 +1,27 @@
 <template>
   <div id="app">
 	  <Header />
-	  <AddTodo v-on:add-todo="addTodo" />
-	  <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo"/>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Todos from './components/Todos'
 import Header from './components/layout/Header'
-import AddTodo from './components/addTodo'
 
 export default {
-  name: 'app',
-  components: {
-	Todos,
-	Header,
-	AddTodo
-  },
-  data(){
-    return {
-      todos:[
-        {
-		  id: 1,
-		  title: "Todo One",
-		  completed: false
-		},
-		{
-		  id: 2,
-		  title: "Todo Two",
-		  completed: true
-		},
-		        {
-		  id: 3,
-		  title: "Todo Three",
-		  completed: false
-		},
-		
-      ]
-    }
-  },
-  methods: {
-	  deleteTodo(id) {
-		  this.todos = this.todos.filter(todo => todo.id !== id)
-	  },
-	  addTodo(newTodo){
-		  this.todos = [...this.todos,newTodo]
-	  }
-  }
+	name: 'app',
+	components: {
+		Header
+	}
 }
 </script>
+
 
 <style>
 * {
   box-sizing: border-box;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -63,15 +29,15 @@ body {
 }
 
 .btn {
-	display: inline-block;
-	color: #fff;
-	border: none;
-	background:rgb(12, 165, 170);
-	padding: 7px 20px;
-	cursor: pointer;
+  display: inline-block;
+  color: #fff;
+  border: none;
+  background: rgb(12, 165, 170);
+  padding: 7px 20px;
+  cursor: pointer;
 }
 
 .btn:hover {
-	background:rgb(13, 198, 204);	
+  background: rgb(13, 198, 204);
 }
 </style>
